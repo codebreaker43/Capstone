@@ -1,0 +1,828 @@
+/* ==========================================================================
+   CSU CEIT PANEL COMMENTS & DEFENSE MEETING DOCUMENTATION STYLES
+   ========================================================================== */
+
+/* Container & Grid */
+.meeting-doc-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.meeting-header-card {
+    background: linear-gradient(135deg, #064E3B 0%, #022C22 100%);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem 1.75rem;
+    color: white;
+    box-shadow: 0 10px 25px -5px rgba(2, 44, 34, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.meeting-header-card::before {
+    content: '';
+    position: absolute;
+    top: -50px;
+    right: -50px;
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle, rgba(245, 158, 11, 0.25) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+.meeting-title-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.meeting-title-row h1 {
+    font-size: 1.35rem;
+    font-weight: 800;
+    color: #FFFFFF;
+    margin-bottom: 0.35rem;
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+}
+
+.meeting-title-row p {
+    color: #A7F3D0;
+    font-size: 0.88rem;
+    margin: 0;
+}
+
+.session-badge-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.35rem 0.85rem;
+    border-radius: 999px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #FCD34D;
+}
+
+/* Candidate Metadata Strip */
+.candidate-strip {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    background: rgba(255, 255, 255, 0.07);
+    backdrop-filter: blur(8px);
+    border-radius: 10px;
+    padding: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.candidate-strip .strip-item .label {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #94A3B8;
+    margin-bottom: 0.2rem;
+}
+
+.candidate-strip .strip-item .value {
+    font-size: 0.92rem;
+    font-weight: 600;
+    color: #FFFFFF;
+}
+
+/* Full-Width Minutes of the Meeting (MOM) Layout */
+.doc-full-layout,
+.doc-split-layout,
+.doc-split-layout.single-column {
+    display: block;
+    width: 100%;
+}
+
+.doc-full-layout #momOfficialDocCard,
+.doc-split-layout #momOfficialDocCard {
+    width: 100%;
+}
+
+/* Section Card */
+.doc-card {
+    background: #FFFFFF;
+    border: 1px solid #E2E8F0;
+    border-radius: 12px;
+    box-shadow: var(--shadow-sm);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.doc-card-header {
+    background: #F8FAFC;
+    border-bottom: 1px solid #E2E8F0;
+    padding: 1rem 1.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+
+.doc-card-header h2 {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #0F172A;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.doc-card-body {
+    padding: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+/* Voice-to-Text Control Console (CSU CEIT Green Theme) */
+.voice-console {
+    background: linear-gradient(135deg, #064E3B 0%, #047857 55%, #022C22 100%);
+    border-radius: 12px;
+    padding: 1.25rem;
+    color: white;
+    border: 1px solid #10B981;
+    position: relative;
+    box-shadow: 0 8px 24px -4px rgba(4, 120, 87, 0.4);
+}
+
+.voice-status-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.voice-live-indicator {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #ECFDF5;
+}
+
+.voice-pulse-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #A7F3D0;
+    transition: all 0.3s;
+}
+
+.voice-pulse-dot.active {
+    background: #EF4444;
+    box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7);
+    animation: pulseRing 1.4s infinite cubic-bezier(0.66, 0, 0, 1);
+}
+
+@keyframes pulseRing {
+    0% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.8); }
+    70% { box-shadow: 0 0 0 12px rgba(239, 68, 68, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
+}
+
+.sound-wave-bars {
+    display: flex;
+    align-items: flex-end;
+    gap: 3px;
+    height: 22px;
+}
+
+.sound-wave-bars span {
+    width: 3px;
+    background: #34D399;
+    border-radius: 3px;
+    height: 4px;
+    transition: height 0.15s;
+}
+
+.sound-wave-bars.active span:nth-child(1) { animation: waveAnim 0.7s infinite alternate 0.1s; }
+.sound-wave-bars.active span:nth-child(2) { animation: waveAnim 0.7s infinite alternate 0.3s; }
+.sound-wave-bars.active span:nth-child(3) { animation: waveAnim 0.7s infinite alternate 0.5s; }
+.sound-wave-bars.active span:nth-child(4) { animation: waveAnim 0.7s infinite alternate 0.2s; }
+.sound-wave-bars.active span:nth-child(5) { animation: waveAnim 0.7s infinite alternate 0.4s; }
+
+@keyframes waveAnim {
+    0% { height: 4px; }
+    100% { height: 20px; }
+}
+
+.voice-controls-row {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 0.75rem;
+    align-items: center;
+}
+
+@media (max-width: 600px) {
+    .voice-controls-row {
+        grid-template-columns: 1fr;
+    }
+}
+
+.btn-mic-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.65rem;
+    padding: 0.75rem 1.4rem;
+    border-radius: 10px;
+    font-size: 0.95rem;
+    font-weight: 800;
+    border: none;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    background: #F59E0B;
+    color: #022C22;
+    box-shadow: 0 4px 12px rgba(245, 158, 11, 0.4);
+}
+
+.btn-mic-toggle:hover {
+    background: #D97706;
+    color: #FFFFFF;
+    transform: translateY(-1px);
+}
+
+.btn-mic-toggle.recording {
+    background: #DC2626 !important;
+    color: #FFFFFF !important;
+    box-shadow: 0 4px 16px rgba(220, 38, 38, 0.55);
+    animation: recordingBtnGlow 1.8s infinite;
+}
+
+@keyframes recordingBtnGlow {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.02); }
+    100% { transform: scale(1); }
+}
+
+.speaker-select-input {
+    background: #FFFFFF !important;
+    background-color: #FFFFFF !important;
+    border: 2px solid #10B981 !important;
+    color: #0F172A !important;
+    padding: 0.5rem 0.95rem !important;
+    height: 44px !important;
+    min-height: 44px !important;
+    line-height: 1.4 !important;
+    border-radius: 8px !important;
+    font-size: 0.95rem !important;
+    font-weight: 700 !important;
+    width: 100%;
+    cursor: pointer;
+    box-sizing: border-box !important;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.18) !important;
+    -webkit-appearance: menulist !important;
+    appearance: menulist !important;
+}
+
+.speaker-select-input:focus {
+    outline: none;
+    border-color: #047857 !important;
+    box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.45) !important;
+}
+
+.speaker-select-input option {
+    background: #FFFFFF !important;
+    background-color: #FFFFFF !important;
+    color: #0F172A !important;
+    font-size: 0.95rem !important;
+    font-weight: 700 !important;
+    padding: 10px 14px !important;
+}
+
+/* Compact Voice Dictate Language Dropdown */
+.dictate-lang-select {
+    display: inline-flex !important;
+    align-items: center !important;
+    width: auto !important;
+    min-width: 130px !important;
+    height: 38px !important;
+    min-height: 38px !important;
+    line-height: normal !important;
+    padding: 4px 10px !important;
+    font-size: 0.9rem !important;
+    font-weight: 700 !important;
+    color: #0F172A !important;
+    background: #FFFFFF !important;
+    background-color: #FFFFFF !important;
+    border: 2px solid #10B981 !important;
+    border-radius: 6px !important;
+    cursor: pointer !important;
+    box-sizing: border-box !important;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08) !important;
+    -webkit-appearance: menulist !important;
+    appearance: menulist !important;
+}
+
+.dictate-lang-select:focus {
+    outline: none !important;
+    border-color: #047857 !important;
+    box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.3) !important;
+}
+
+.dictate-lang-select option {
+    background-color: #FFFFFF !important;
+    color: #0F172A !important;
+    font-weight: 700 !important;
+    font-size: 0.9rem !important;
+    padding: 8px 12px !important;
+}
+
+/* Voice console inputs override */
+.voice-console select,
+.voice-console select option {
+    background: #FFFFFF !important;
+    background-color: #FFFFFF !important;
+    color: #0F172A !important;
+    font-size: 0.95rem !important;
+    font-weight: 700 !important;
+}
+
+/* Interim Speech Preview */
+.interim-preview-box {
+    margin-top: 0.85rem;
+    background: #022C22 !important;
+    border: 2px dashed #34D399 !important;
+    border-radius: 10px;
+    padding: 0.95rem 1.25rem !important;
+    font-size: 1rem !important;
+    font-weight: 700 !important;
+    color: #FFFFFF !important;
+    min-height: 56px;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.interim-preview-box.hearing {
+    border-color: #FDE047 !important;
+    background: #011D16 !important;
+    color: #FFFFFF !important;
+    box-shadow: 0 0 16px rgba(253, 224, 71, 0.35);
+}
+
+.interim-preview-box #interimText {
+    color: #FFFFFF !important;
+    font-weight: 700 !important;
+    font-size: 1rem !important;
+    font-style: normal;
+    letter-spacing: 0.2px;
+}
+
+/* Transcripts Feed */
+.transcripts-stream {
+    max-height: 520px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+    padding-right: 0.35rem;
+}
+
+.transcript-entry {
+    background: #F8FAFC;
+    border: 1px solid #E2E8F0;
+    border-radius: 10px;
+    padding: 0.85rem 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    transition: all 0.2s ease;
+    position: relative;
+}
+
+.transcript-entry:hover {
+    border-color: #CBD5E1;
+    box-shadow: var(--shadow-sm);
+    background: #FFFFFF;
+}
+
+.transcript-meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.speaker-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    font-size: 0.86rem !important;
+    font-weight: 800 !important;
+    padding: 0.35rem 0.85rem !important;
+    border-radius: 999px;
+}
+
+.speaker-badge.chair { background: #FEF3C7; color: #78350F; border: 1.5px solid #FCD34D; }
+.speaker-badge.panel { background: #D1FAE5; color: #064E3B; border: 1.5px solid #6EE7B7; }
+.speaker-badge.adviser { background: #DBEAFE; color: #1E3A8A; border: 1.5px solid #93C5FD; }
+.speaker-badge.student { background: #F3E8FF; color: #581C87; border: 1.5px solid #D8B4FE; }
+.speaker-badge.secretary { background: #E0E7FF; color: #312E81; border: 1.5px solid #A5B4FC; }
+
+.transcript-time {
+    font-size: 0.82rem !important;
+    color: #475569 !important;
+    font-family: inherit;
+    font-weight: 700 !important;
+}
+
+.transcript-text {
+    font-size: 1rem !important;
+    font-weight: 600 !important;
+    color: #0F172A !important;
+    line-height: 1.65;
+    word-break: break-word;
+}
+
+.transcript-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.35rem;
+    margin-top: 0.25rem;
+}
+
+.btn-transcript-act {
+    background: #F1F5F9;
+    border: 1px solid #CBD5E1;
+    color: #334155 !important;
+    padding: 0.25rem 0.6rem;
+    font-size: 0.8rem !important;
+    font-weight: 700 !important;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.15s;
+}
+
+.btn-transcript-act:hover {
+    color: #0F172A !important;
+    background: #E2E8F0;
+}
+
+.btn-transcript-act.delete:hover {
+    color: #DC2626 !important;
+    background: #FEE2E2;
+    border-color: #FCA5A5;
+}
+
+/* Minutes of the Meeting (MOM) Document Section */
+.mom-document-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.csu-mom-letterhead {
+    border-bottom: 2px solid #047857;
+    padding-bottom: 1rem;
+    text-align: center;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.csu-mom-letterhead .univ-rep {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    color: #64748B;
+    letter-spacing: 0.8px;
+    font-weight: 600;
+}
+
+.csu-mom-letterhead .univ-title {
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: #022C22;
+    margin: 0.15rem 0;
+    letter-spacing: -0.2px;
+}
+
+.csu-mom-letterhead .college-title {
+    font-size: 0.85rem;
+    color: #047857;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.csu-mom-letterhead .doc-heading {
+    margin-top: 0.75rem;
+    font-size: 1rem;
+    font-weight: 800;
+    color: #0F172A;
+    background: #F1F5F9;
+    padding: 0.35rem 1.25rem;
+    border-radius: 999px;
+    display: inline-block;
+    border: 1px solid #CBD5E1;
+}
+
+/* Form Section Styling */
+.mom-section-box {
+    background: #FFFFFF;
+    border: 1px solid #E2E8F0;
+    border-radius: 10px;
+    padding: 1.15rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+}
+
+.mom-section-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #F1F5F9;
+    padding-bottom: 0.5rem;
+}
+
+.mom-section-header h3 {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #064E3B;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.mom-label {
+    font-size: 0.92rem !important;
+    font-weight: 800 !important;
+    color: #0F172A !important;
+    margin-bottom: 0.35rem;
+    display: block;
+}
+
+.mom-input, .mom-textarea, .mom-select {
+    width: 100%;
+    padding: 0.75rem 0.95rem;
+    border: 1.5px solid #CBD5E1 !important;
+    border-radius: 8px !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+    font-family: inherit;
+    color: #0F172A !important;
+    background: #FFFFFF !important;
+    transition: border-color 0.2s;
+}
+
+.mom-select option {
+    background: #FFFFFF !important;
+    color: #0F172A !important;
+    font-size: 0.95rem !important;
+    font-weight: 700 !important;
+    padding: 10px 14px;
+}
+
+.mom-input:focus, .mom-textarea:focus, .mom-select:focus {
+    outline: none;
+    border-color: #047857;
+    box-shadow: 0 0 0 3px rgba(4, 120, 87, 0.1);
+}
+
+.mom-textarea {
+    resize: vertical;
+    min-height: 85px;
+    line-height: 1.5;
+}
+
+/* Decision Verdict Radio Badges */
+.verdict-options-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 0.65rem;
+}
+
+.verdict-radio-card {
+    border: 2px solid #E2E8F0;
+    border-radius: 8px;
+    padding: 0.65rem 0.85rem;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #334155;
+    background: #F8FAFC;
+}
+
+.verdict-radio-card:hover {
+    border-color: #CBD5E1;
+    background: #FFFFFF;
+}
+
+.verdict-radio-card.selected {
+    border-color: #047857;
+    background: #ECFDF5;
+    color: #064E3B;
+}
+
+.verdict-radio-card input {
+    margin: 0;
+    cursor: pointer;
+}
+
+/* Action Items Table */
+.action-items-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.82rem;
+    margin-top: 0.5rem;
+}
+
+.action-items-table th {
+    background: #F1F5F9;
+    color: #475569;
+    font-weight: 700;
+    padding: 0.6rem 0.75rem;
+    text-align: left;
+    border-bottom: 1px solid #CBD5E1;
+}
+
+.action-items-table td {
+    padding: 0.5rem 0.75rem;
+    border-bottom: 1px solid #E2E8F0;
+    vertical-align: middle;
+}
+
+/* Comments Panel & Feedback Stream */
+.comments-filter-bar {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    background: #FFFFFF;
+    border: 1px solid #E2E8F0;
+    border-radius: 10px;
+    padding: 0.75rem 1rem;
+    box-shadow: var(--shadow-xs);
+}
+
+.filter-chip {
+    padding: 0.3rem 0.75rem;
+    border-radius: 999px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    border: 1px solid #E2E8F0;
+    background: #F8FAFC;
+    color: #475569;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.filter-chip:hover {
+    border-color: #047857;
+    color: #047857;
+}
+
+.filter-chip.active {
+    background: #047857;
+    color: white;
+    border-color: #047857;
+}
+
+.comment-card {
+    background: #FFFFFF;
+    border: 1px solid #E2E8F0;
+    border-radius: 10px;
+    padding: 1.15rem;
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+    transition: border-color 0.2s;
+    position: relative;
+}
+
+.comment-card:hover {
+    border-color: #CBD5E1;
+    box-shadow: var(--shadow-md);
+}
+
+.comment-card.revision-needed {
+    border-left: 4px solid #F59E0B;
+}
+
+.comment-card.resolved {
+    border-left: 4px solid #10B981;
+    opacity: 0.88;
+}
+
+.comment-card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.comment-author-info {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+}
+
+.comment-avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: #047857;
+    color: white;
+    font-weight: 700;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.feedback-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.2rem 0.6rem;
+    border-radius: 999px;
+    font-size: 0.72rem;
+    font-weight: 700;
+}
+
+.feedback-tag.suggestion { background: #EFF6FF; color: #1D4ED8; border: 1px solid #BFDBFE; }
+.feedback-tag.revision { background: #FEF3C7; color: #B45309; border: 1px solid #FDE68A; }
+.feedback-tag.commendation { background: #ECFDF5; color: #047857; border: 1px solid #A7F3D0; }
+.feedback-tag.clarification { background: #FAF5FF; color: #7E22CE; border: 1px solid #E9D5FF; }
+
+/* Printable Format Styles */
+@media print {
+    body {
+        background: white !important;
+        font-family: 'Times New Roman', Times, serif !important;
+        font-size: 11pt !important;
+        color: black !important;
+    }
+
+    .sidebar, .topbar, .voice-console, .doc-card-header .btn-primary, 
+    .btn-mic-toggle, .btn-group, .btn-transcript-act, .no-print,
+    .comments-filter-bar, .comment-form-container {
+        display: none !important;
+    }
+
+    .main-content {
+        margin: 0 !important;
+        padding: 0 !important;
+        width: 100% !important;
+    }
+
+    .doc-split-layout {
+        display: block !important;
+    }
+
+    .doc-card {
+        border: none !important;
+        box-shadow: none !important;
+        padding: 0 !important;
+    }
+
+    .csu-mom-letterhead {
+        border-bottom: 2px solid black !important;
+    }
+
+    .mom-section-box {
+        border: 1px solid #333 !important;
+        page-break-inside: avoid;
+    }
+}
+
+/* Zero-Latency Real-Time Voice Animations */
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+.transcript-entry.live-streaming {
+    animation: livePulse 2s infinite ease-in-out;
+}
+
+@keyframes livePulse {
+    0%, 100% { border-left-color: #10B981; }
+    50% { border-left-color: #34D399; }
+}
